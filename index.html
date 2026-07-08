@@ -1,0 +1,1061 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Formant OKRs — Jun–Sep 2026</title>
+<!--
+╔══════════════════════════════════════════════════════════════╗
+║  MULTI-USER SYNC SETUP  (free, ~5 minutes)                   ║
+╠══════════════════════════════════════════════════════════════╣
+║  1. Go to https://console.firebase.google.com                ║
+║  2. Click "Add project" → name it anything → Continue        ║
+║  3. Left sidebar: Build → Realtime Database                   ║
+║  4. Click "Create Database" → Start in test mode → Enable    ║
+║  5. Copy the Database URL shown at the top of the page       ║
+║     It looks like:                                            ║
+║     https://your-project-default-rtdb.firebaseio.com         ║
+║  6. Open this file in any text editor                        ║
+║  7. Find FIREBASE_URL = "" near the top of the <script>      ║
+║  8. Paste your URL inside the quotes                          ║
+║  9. Save and share this file with your team                   ║
+║                                                               ║
+║  Everyone who opens it will see live updates automatically!  ║
+╚══════════════════════════════════════════════════════════════╝
+-->
+<style>
+  :root {
+    --deep:#0A0F11; --slate:#161C1F; --iris:#8B8CF4; --amber:#E8AB7F;
+    --neutral:#A3ABA9; --fog-green:#4B5E53; --horizon:#ACC3B3;
+    --fw:#F2F3F4; --surface:#1A2023; --card:#1D2427;
+    --text:#F2F3F4; --text-muted:#A3ABA9; --border:rgba(163,171,169,0.12);
+    --iris-dim:rgba(139,140,244,0.12); --amber-dim:rgba(232,171,127,0.12);
+    --green:#6ECA97; --green-dim:rgba(110,202,151,0.12);
+    --red:#EF6461; --red-dim:rgba(239,100,97,0.12);
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:var(--deep);color:var(--text);font-size:14px;line-height:1.5;padding:24px;min-height:100vh;}
+  .container{max-width:920px;margin:0 auto;}
+
+  /* ── HEADER ── */
+  .header{background:var(--slate);border:1px solid var(--border);border-radius:8px;padding:28px 32px;margin-bottom:12px;position:relative;overflow:hidden;}
+  .header::before{content:'';position:absolute;top:-80px;right:-60px;width:280px;height:280px;background:radial-gradient(circle,rgba(139,140,244,.12) 0%,transparent 65%);pointer-events:none;}
+  .header::after{content:'';position:absolute;bottom:-60px;left:35%;width:200px;height:200px;background:radial-gradient(circle,rgba(232,171,127,.07) 0%,transparent 65%);pointer-events:none;}
+  .header-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:22px;}
+  .brand{display:flex;align-items:center;gap:9px;margin-bottom:10px;}
+  .brand-pulse{width:7px;height:7px;background:var(--iris);border-radius:50%;box-shadow:0 0 10px var(--iris);animation:pulse 2.8s ease-in-out infinite;}
+  @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(.8)}}
+  .brand-name{font-size:10px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--neutral);font-family:'Space Grotesk','Inter',sans-serif;}
+  .header-title{color:var(--fw);font-size:26px;font-weight:600;letter-spacing:-.025em;margin-bottom:4px;font-family:'Space Grotesk','Inter',sans-serif;}
+  .header-subtitle{color:rgba(163,171,169,.75);font-size:13px;}
+  .header-stats{display:flex;gap:28px;text-align:right;flex-shrink:0;}
+  .stat-value{color:var(--fw);font-size:32px;font-weight:700;line-height:1;font-variant-numeric:tabular-nums;font-family:'Space Grotesk','Inter',sans-serif;}
+  .stat-value.amber{color:var(--amber);}
+  .stat-label{color:var(--neutral);font-size:10px;font-weight:600;letter-spacing:.09em;text-transform:uppercase;margin-top:4px;}
+  .timeline-labels{display:flex;justify-content:space-between;color:rgba(163,171,169,.6);font-size:10px;letter-spacing:.08em;text-transform:uppercase;margin-bottom:7px;}
+  .timeline-track{background:rgba(255,255,255,.06);border-radius:3px;height:5px;overflow:visible;position:relative;}
+  .timeline-fill{height:100%;border-radius:3px;background:linear-gradient(90deg,var(--iris),var(--amber));position:relative;}
+  .timeline-marker{position:absolute;right:-1px;top:-5px;width:3px;height:15px;background:#fff;border-radius:2px;box-shadow:0 0 8px rgba(255,255,255,.5);}
+  .timeline-today-label{color:rgba(139,140,244,.8);font-size:10px;margin-top:8px;letter-spacing:.04em;}
+
+  /* ── SETUP CALLOUT ── */
+  .setup-callout{display:none;align-items:flex-start;gap:12px;background:var(--iris-dim);border:1px solid rgba(139,140,244,.2);border-radius:6px;padding:12px 16px;margin-bottom:10px;font-size:12px;line-height:1.6;color:var(--text-muted);}
+  .setup-callout.visible{display:flex;}
+  .setup-callout strong{display:block;font-size:13px;margin-bottom:3px;color:var(--fw);}
+  .setup-callout code{background:rgba(139,140,244,.15);padding:1px 6px;border-radius:3px;font-size:11px;font-family:'JetBrains Mono',monospace;color:var(--iris);}
+
+  /* ── STATUS PILLS ── */
+  .pills{display:flex;gap:8px;margin-bottom:10px;flex-wrap:wrap;}
+  .pill{display:flex;align-items:center;gap:12px;padding:10px 18px;border-radius:6px;flex:1;min-width:110px;}
+  .pill-count{font-size:24px;font-weight:700;line-height:1;font-variant-numeric:tabular-nums;font-family:'Space Grotesk','Inter',sans-serif;}
+  .pill-label{font-size:11px;color:var(--text-muted);font-weight:500;}
+  .pill.ns{background:var(--card);border:1px solid var(--border);}
+  .pill.ns .pill-count{color:var(--neutral);}
+  .pill.ip{background:var(--iris-dim);border:1px solid rgba(139,140,244,.2);}
+  .pill.ip .pill-count{color:var(--iris);}
+  .pill.cp{background:var(--green-dim);border:1px solid rgba(110,202,151,.25);}
+  .pill.cp .pill-count{color:var(--green);}
+
+  /* ── OVERALL BAR ── */
+  .overall-bar-wrap{background:var(--card);border:1px solid var(--border);border-radius:6px;padding:13px 20px;margin-bottom:10px;display:flex;align-items:center;gap:16px;}
+  .overall-label{font-size:10px;font-weight:700;color:var(--text-muted);white-space:nowrap;letter-spacing:.1em;text-transform:uppercase;font-family:'JetBrains Mono',monospace;}
+  .overall-track{flex:1;height:6px;background:rgba(163,171,169,.08);border-radius:3px;overflow:hidden;}
+  .overall-fill{height:100%;border-radius:3px;background:linear-gradient(90deg,var(--iris),var(--horizon));transition:width .4s ease;}
+  .overall-pct{font-size:15px;font-weight:700;color:var(--fw);font-variant-numeric:tabular-nums;min-width:42px;text-align:right;font-family:'Space Grotesk','Inter',sans-serif;}
+
+  /* ── TOOLBAR ── */
+  .version-toolbar{display:flex;align-items:center;justify-content:space-between;padding:10px 16px;background:var(--card);border:1px solid var(--border);border-radius:6px;margin-bottom:10px;gap:10px;flex-wrap:wrap;}
+  .version-left{display:flex;align-items:center;gap:8px;}
+  .version-right{display:flex;align-items:center;gap:8px;}
+  .btn-save{display:flex;align-items:center;gap:6px;padding:7px 15px;background:var(--iris);color:#fff;border:none;border-radius:5px;font-size:12px;font-weight:600;cursor:pointer;transition:opacity .15s,transform .1s;font-family:inherit;letter-spacing:.02em;}
+  .btn-save:hover{opacity:.88;transform:translateY(-1px);}
+  .btn-outline{display:flex;align-items:center;gap:6px;padding:7px 14px;background:transparent;color:var(--text-muted);border:1px solid var(--border);border-radius:5px;font-size:12px;font-weight:600;cursor:pointer;transition:all .15s;font-family:inherit;}
+  .btn-outline:hover{border-color:var(--iris);color:var(--iris);}
+  .btn-outline.active{border-color:var(--iris);color:var(--iris);background:var(--iris-dim);}
+  .unsaved-dot{width:6px;height:6px;background:var(--amber);border-radius:50%;box-shadow:0 0 6px var(--amber);display:none;flex-shrink:0;}
+  .unsaved-dot.visible{display:block;}
+
+  /* ── SYNC ── */
+  .sync-indicator{display:flex;align-items:center;gap:7px;}
+  .sync-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0;transition:background .3s,box-shadow .3s;}
+  .sync-dot.ok{background:var(--green);box-shadow:0 0 7px rgba(110,202,151,.5);}
+  .sync-dot.syncing{background:var(--iris);animation:pulse 1s ease-in-out infinite;}
+  .sync-dot.error{background:var(--red);}
+  .sync-dot.local{background:var(--neutral);}
+  .sync-label{font-size:11px;color:var(--text-muted);white-space:nowrap;font-family:'JetBrains Mono',monospace;}
+  .toolbar-divider{width:1px;height:16px;background:var(--border);flex-shrink:0;}
+  .user-btn{display:flex;align-items:center;gap:5px;padding:5px 12px;background:transparent;border:1px solid var(--border);border-radius:20px;font-size:11px;font-weight:600;cursor:pointer;color:var(--text-muted);transition:all .15s;font-family:inherit;white-space:nowrap;}
+  .user-btn:hover{border-color:var(--iris);color:var(--iris);}
+
+  /* ── HISTORY PANEL ── */
+  .history-panel{background:var(--card);border:1px solid var(--border);border-radius:6px;margin-bottom:10px;overflow:hidden;display:none;}
+  .history-panel.open{display:block;}
+  .history-panel-header{display:flex;align-items:center;justify-content:space-between;padding:13px 18px;border-bottom:1px solid var(--border);background:var(--slate);}
+  .history-panel-title{font-size:13px;font-weight:600;color:var(--fw);}
+  .compare-controls{display:flex;align-items:center;gap:10px;}
+  .compare-hint{font-size:11px;color:var(--text-muted);}
+  .btn-do-compare{padding:6px 14px;background:var(--iris);color:#fff;border:none;border-radius:5px;font-size:11px;font-weight:600;cursor:pointer;display:none;font-family:inherit;}
+  .btn-do-compare.visible{display:inline-flex;align-items:center;gap:5px;}
+  .btn-do-compare:hover{opacity:.88;}
+  .history-list{padding:12px 18px;display:flex;flex-direction:column;gap:8px;max-height:300px;overflow-y:auto;}
+  .history-empty{text-align:center;color:var(--text-muted);font-size:12px;padding:28px;line-height:2;}
+  .version-card{display:flex;align-items:center;gap:12px;padding:10px 14px;border:1px solid var(--border);border-radius:6px;background:var(--surface);transition:border-color .15s,background .15s;}
+  .version-card.sel{border-color:var(--iris);background:var(--iris-dim);}
+  .version-check{cursor:pointer;width:14px;height:14px;accent-color:var(--iris);flex-shrink:0;}
+  .version-info{flex:1;min-width:0;}
+  .version-name{font-size:13px;font-weight:600;color:var(--fw);margin-bottom:2px;}
+  .version-time{font-size:11px;color:var(--text-muted);font-family:'JetBrains Mono',monospace;}
+  .version-chips{display:flex;gap:4px;margin-top:4px;flex-wrap:wrap;}
+  .chip{font-size:10px;padding:2px 7px;border-radius:10px;font-weight:600;font-variant-numeric:tabular-nums;}
+  .chip.ns{background:rgba(163,171,169,.1);color:var(--neutral);}
+  .chip.ip{background:var(--iris-dim);color:var(--iris);}
+  .chip.cp{background:var(--green-dim);color:var(--green);}
+  .btn-restore{padding:5px 12px;background:transparent;border:1px solid var(--border);border-radius:5px;font-size:11px;font-weight:600;cursor:pointer;color:var(--text-muted);transition:all .15s;flex-shrink:0;font-family:inherit;}
+  .btn-restore:hover{border-color:var(--green);color:var(--green);}
+  .btn-del{padding:5px 8px;background:transparent;border:1px solid var(--border);border-radius:5px;font-size:12px;cursor:pointer;color:var(--text-muted);transition:all .15s;flex-shrink:0;font-family:inherit;}
+  .btn-del:hover{border-color:var(--red);color:var(--red);}
+
+  /* ── SECTIONS ── */
+  .section{background:var(--card);border:1px solid var(--border);border-radius:6px;margin-bottom:8px;overflow:hidden;transition:border-color .15s;}
+  .section:hover{border-color:rgba(163,171,169,.2);}
+  .section-header{display:flex;align-items:center;justify-content:space-between;padding:16px 20px;cursor:pointer;user-select:none;transition:background .15s;gap:14px;}
+  .section-header:hover{background:rgba(255,255,255,.02);}
+  .section-left{display:flex;align-items:center;gap:12px;}
+  .section-icon{font-size:16px;width:34px;height:34px;display:flex;align-items:center;justify-content:center;border-radius:6px;background:rgba(163,171,169,.06);border:1px solid var(--border);flex-shrink:0;}
+  .section-meta{font-size:11px;color:var(--text-muted);margin-top:2px;pointer-events:none;font-family:'JetBrains Mono',monospace;}
+  .section-right{display:flex;align-items:center;gap:12px;flex-shrink:0;}
+  .sec-prog-track{width:80px;height:4px;background:rgba(163,171,169,.1);border-radius:2px;overflow:hidden;}
+  .sec-prog-fill{height:100%;border-radius:2px;background:linear-gradient(90deg,var(--iris),rgba(139,140,244,.4));transition:width .4s ease;}
+  .sec-prog-label{font-size:12px;color:var(--text-muted);font-variant-numeric:tabular-nums;min-width:32px;text-align:right;font-weight:600;font-family:'JetBrains Mono',monospace;}
+  .chevron{color:var(--neutral);font-size:11px;transition:transform .2s;margin-left:2px;}
+  .section.open .chevron{transform:rotate(180deg);}
+  .section-body{display:none;border-top:1px solid var(--border);padding:0 20px 14px;}
+  .section.open .section-body{display:block;}
+
+  /* ── GOALS ── */
+  .goal-item{padding:14px 0;border-bottom:1px solid rgba(163,171,169,.06);}
+  .goal-item:last-child{border-bottom:none;}
+  .goal-top{display:flex;align-items:flex-start;gap:12px;margin-bottom:10px;}
+  .goal-num{font-size:10px;font-weight:700;color:rgba(163,171,169,.5);letter-spacing:.07em;min-width:20px;padding-top:3px;flex-shrink:0;font-family:'JetBrains Mono',monospace;}
+  .goal-content{flex:1;min-width:0;}
+  .badge{padding:4px 11px;border-radius:20px;font-size:11px;font-weight:600;letter-spacing:.02em;white-space:nowrap;border:1px solid;min-width:104px;text-align:center;flex-shrink:0;transition:all .2s;margin-top:1px;font-family:'JetBrains Mono',monospace;}
+  .badge.not-started{background:rgba(163,171,169,.06);border-color:var(--border);color:var(--neutral);}
+  .badge.in-progress{background:var(--iris-dim);border-color:rgba(139,140,244,.25);color:var(--iris);}
+  .badge.complete{background:var(--green-dim);border-color:rgba(110,202,151,.25);color:var(--green);}
+  .goal-del{opacity:0;padding:3px 7px;border:1px solid var(--border);border-radius:4px;background:transparent;color:var(--text-muted);cursor:pointer;font-size:11px;transition:all .15s;flex-shrink:0;font-family:inherit;margin-top:2px;line-height:1;}
+  .goal-item:hover .goal-del{opacity:1;}
+  .goal-del:hover{border-color:var(--red);color:var(--red);background:var(--red-dim);}
+  .add-goal-btn{display:flex;align-items:center;gap:7px;width:100%;padding:9px 12px;margin-top:10px;border:1px dashed rgba(139,140,244,.2);border-radius:5px;background:transparent;color:var(--text-muted);cursor:pointer;font-size:12px;font-weight:500;transition:all .15s;font-family:inherit;text-align:left;}
+  .add-goal-btn:hover{border-color:var(--iris);color:var(--iris);background:var(--iris-dim);}
+  .empty-section{text-align:center;color:var(--text-muted);font-size:12px;padding:18px 0 6px;font-style:italic;}
+
+  /* ── EDITABLE ── */
+  [contenteditable]{outline:none;border-radius:3px;cursor:text;transition:background .12s,box-shadow .12s;}
+  [contenteditable]:hover{background:rgba(139,140,244,.06);}
+  [contenteditable]:focus{background:rgba(139,140,244,.09);box-shadow:inset 0 0 0 1.5px rgba(139,140,244,.25);padding:1px 4px;margin:-1px -4px;}
+  .goal-title-e{font-size:14px;font-weight:600;color:var(--fw);margin-bottom:3px;line-height:1.35;}
+  .goal-desc-e{font-size:12px;color:var(--text-muted);line-height:1.55;}
+  .section-title-e{font-size:15px;font-weight:600;color:var(--fw);font-family:'Space Grotesk','Inter',sans-serif;}
+
+  /* ── SLIDER ── */
+  .goal-slider-row{display:flex;align-items:center;gap:12px;padding-left:32px;}
+  .goal-pct-label{font-size:12px;font-weight:700;color:var(--fw);min-width:36px;text-align:right;font-variant-numeric:tabular-nums;transition:color .2s;font-family:'JetBrains Mono',monospace;}
+  .goal-pct-label.complete-color{color:var(--green);}
+  .goal-pct-label.progress-color{color:var(--iris);}
+  input[type=range]{-webkit-appearance:none;appearance:none;flex:1;height:4px;border-radius:4px;outline:none;cursor:pointer;background:rgba(163,171,169,.1);}
+  input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:15px;height:15px;border-radius:50%;background:var(--iris);box-shadow:0 0 0 3px rgba(139,140,244,.18);cursor:pointer;transition:box-shadow .15s,transform .15s;}
+  input[type=range]::-webkit-slider-thumb:hover{box-shadow:0 0 0 6px rgba(139,140,244,.22);transform:scale(1.15);}
+  input[type=range]::-moz-range-thumb{width:15px;height:15px;border-radius:50%;background:var(--iris);border:none;cursor:pointer;}
+  input[type=range].done::-webkit-slider-thumb{background:var(--green);box-shadow:0 0 0 3px rgba(110,202,151,.18);}
+  input[type=range].done::-moz-range-thumb{background:var(--green);}
+
+  /* ── OBJECTIVE BLOCK ── */
+  .obj-card{background:var(--slate);border:1px solid var(--border);border-radius:6px;padding:20px 24px;margin-bottom:8px;}
+  .obj-eyebrow{font-size:10px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--amber);font-family:'JetBrains Mono',monospace;margin-bottom:8px;}
+  .obj-title{font-size:17px;font-weight:600;color:var(--fw);line-height:1.4;margin-bottom:14px;font-family:'Space Grotesk','Inter',sans-serif;letter-spacing:-.01em;}
+  .kr-list{display:flex;flex-direction:column;gap:6px;}
+  .kr-item{display:flex;align-items:flex-start;gap:10px;padding:10px 12px;border-radius:4px;background:rgba(163,171,169,.04);border:1px solid var(--border);}
+  .kr-item:hover .goal-del{opacity:1;}
+  .kr-num{font-size:10px;font-weight:700;color:var(--amber);font-family:'JetBrains Mono',monospace;padding-top:2px;min-width:22px;flex-shrink:0;}
+  .kr-text{flex:1;min-width:0;}
+  .kr-title{font-size:13px;font-weight:600;color:var(--fw);margin-bottom:2px;line-height:1.3;}
+  .kr-desc{font-size:12px;color:var(--text-muted);line-height:1.5;}
+
+  /* ── MODALS ── */
+  .modal-overlay{position:fixed;inset:0;background:rgba(10,15,17,.7);backdrop-filter:blur(5px);display:none;align-items:center;justify-content:center;z-index:1000;}
+  .modal-overlay.open{display:flex;}
+  .modal{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:26px;width:420px;box-shadow:0 32px 80px rgba(0,0,0,.5);}
+  .modal-title{font-size:17px;font-weight:700;margin-bottom:5px;color:var(--fw);font-family:'Space Grotesk','Inter',sans-serif;}
+  .modal-sub{font-size:12px;color:var(--text-muted);margin-bottom:20px;line-height:1.6;}
+  .modal-input{width:100%;padding:11px 14px;border:1px solid var(--border);border-radius:6px;font-size:13px;font-family:inherit;outline:none;transition:border-color .15s;margin-bottom:18px;color:var(--fw);background:var(--surface);}
+  .modal-input:focus{border-color:var(--iris);}
+  .modal-actions{display:flex;gap:8px;justify-content:flex-end;}
+  .btn-modal-cancel{padding:9px 18px;border:1px solid var(--border);border-radius:6px;background:transparent;font-size:13px;font-weight:600;cursor:pointer;color:var(--text-muted);font-family:inherit;}
+  .btn-modal-cancel:hover{border-color:var(--fw);color:var(--fw);}
+  .btn-modal-ok{padding:9px 20px;border:none;border-radius:6px;background:var(--iris);color:#fff;font-size:13px;font-weight:600;cursor:pointer;font-family:inherit;}
+  .btn-modal-ok:hover{opacity:.88;}
+
+  /* ── COMPARE MODAL ── */
+  .cmp-overlay{position:fixed;inset:0;background:rgba(10,15,17,.75);backdrop-filter:blur(5px);display:none;align-items:flex-start;justify-content:center;z-index:1000;padding:24px;overflow-y:auto;}
+  .cmp-overlay.open{display:flex;}
+  .cmp-modal{background:var(--card);border:1px solid var(--border);border-radius:10px;width:100%;max-width:740px;box-shadow:0 32px 80px rgba(0,0,0,.5);overflow:hidden;margin:auto;}
+  .cmp-header{display:flex;align-items:flex-start;justify-content:space-between;padding:20px 24px;border-bottom:1px solid var(--border);background:var(--slate);gap:14px;}
+  .cmp-title{font-size:16px;font-weight:700;color:var(--fw);font-family:'Space Grotesk','Inter',sans-serif;}
+  .cmp-vers-label{font-size:11px;color:var(--text-muted);margin-top:3px;font-family:'JetBrains Mono',monospace;}
+  .btn-close-cmp{width:30px;height:30px;border-radius:50%;border:1px solid var(--border);background:transparent;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:15px;color:var(--text-muted);flex-shrink:0;font-family:inherit;}
+  .btn-close-cmp:hover{border-color:var(--fw);color:var(--fw);}
+  .cmp-body{padding:20px 24px;}
+  .cmp-sec-title{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--text-muted);margin:18px 0 8px;display:flex;align-items:center;gap:8px;font-family:'JetBrains Mono',monospace;}
+  .cmp-sec-title:first-child{margin-top:0;}
+  .cmp-sec-title::after{content:'';flex:1;height:1px;background:var(--border);}
+  .cmp-row{display:flex;align-items:center;gap:12px;padding:8px 10px;border-radius:5px;margin-bottom:3px;}
+  .cmp-row:hover{background:var(--surface);}
+  .cmp-goal-name{flex:1;font-size:12px;font-weight:500;min-width:0;color:var(--fw);}
+  .cmp-pcts{display:flex;align-items:center;gap:7px;flex-shrink:0;}
+  .cmp-p{font-size:13px;font-weight:700;font-variant-numeric:tabular-nums;min-width:34px;text-align:center;}
+  .cmp-p.old{color:var(--text-muted);}
+  .cmp-arr{color:var(--neutral);font-size:10px;}
+  .cmp-delta{font-size:11px;font-weight:700;padding:2px 8px;border-radius:10px;font-variant-numeric:tabular-nums;min-width:36px;text-align:center;font-family:'JetBrains Mono',monospace;}
+  .cmp-delta.up{background:var(--green-dim);color:var(--green);}
+  .cmp-delta.dn{background:var(--red-dim);color:var(--red);}
+  .cmp-delta.eq{background:rgba(163,171,169,.1);color:var(--neutral);}
+  .cmp-text-tag{font-size:10px;padding:2px 7px;border-radius:10px;background:var(--amber-dim);color:var(--amber);border:1px solid rgba(232,171,127,.2);white-space:nowrap;}
+  .cmp-new-tag{font-size:10px;padding:2px 7px;border-radius:10px;background:var(--iris-dim);color:var(--iris);border:1px solid rgba(139,140,244,.2);white-space:nowrap;}
+  .cmp-summary{display:flex;border-top:1px solid var(--border);margin-top:16px;padding-top:16px;}
+  .cmp-sum-item{flex:1;text-align:center;padding:0 10px;}
+  .cmp-sum-item+.cmp-sum-item{border-left:1px solid var(--border);}
+  .cmp-sum-val{font-size:24px;font-weight:700;font-variant-numeric:tabular-nums;line-height:1;font-family:'Space Grotesk','Inter',sans-serif;}
+  .cmp-sum-val.up{color:var(--green);}
+  .cmp-sum-val.dn{color:var(--red);}
+  .cmp-sum-val.nu{color:var(--fw);}
+  .cmp-sum-label{font-size:10px;color:var(--text-muted);margin-top:5px;letter-spacing:.04em;}
+
+  .footer-note{text-align:center;color:rgba(163,171,169,.5);font-size:11px;margin-top:16px;letter-spacing:.04em;font-family:'JetBrains Mono',monospace;}
+</style>
+</head>
+<body>
+<div class="container">
+
+<!-- ── HEADER ── -->
+<div class="header">
+  <div class="header-top">
+    <div>
+      <div class="brand"><div class="brand-pulse"></div><span class="brand-name">Formant · OKR Tracker</span></div>
+      <div class="header-title">June – September 2026 OKRs</div>
+      <div class="header-subtitle">Q3 2026 · 122-day sprint to establish Formant as the physical AI leader</div>
+    </div>
+    <div class="header-stats">
+      <div><div class="stat-value amber" id="stat-days">—</div><div class="stat-label">Days Left</div></div>
+      <div><div class="stat-value" id="stat-pct">—%</div><div class="stat-label">Elapsed</div></div>
+    </div>
+  </div>
+  <div>
+    <div class="timeline-labels"><span>Jun 1</span><span>Sep 30</span></div>
+    <div class="timeline-track"><div class="timeline-fill" id="t-fill" style="width:0%"><div class="timeline-marker"></div></div></div>
+    <div class="timeline-today-label" id="today-lbl">▲ Today</div>
+  </div>
+</div>
+
+<!-- Setup callout -->
+<div class="setup-callout" id="setup-callout">
+  <div>🔥</div>
+  <div>
+    <strong>Enable multi-user sync in 5 minutes (free)</strong>
+    Open this file in a text editor → find <code>FIREBASE_URL = ""</code> → paste your Firebase Realtime Database URL → save and reshare. Full setup in the HTML comments at the top.
+  </div>
+</div>
+
+<!-- Toolbar -->
+<div class="version-toolbar">
+  <div class="version-left">
+    <button class="btn-save" onclick="showSaveModal()">💾 Save Version</button>
+    <button class="btn-outline" id="history-btn" onclick="toggleHistory()">🕐 History (<span id="history-count">0</span>)</button>
+    <div class="unsaved-dot" id="unsaved-dot" title="Unsaved changes"></div>
+  </div>
+  <div class="version-right">
+    <div class="sync-indicator">
+      <div class="sync-dot local" id="sync-dot"></div>
+      <span class="sync-label" id="sync-label">Local only</span>
+    </div>
+    <div class="toolbar-divider"></div>
+    <button class="user-btn" id="user-btn" onclick="showNameModal()" title="Change name">
+      👤 <span id="user-name-display">Set name</span>
+    </button>
+  </div>
+</div>
+
+<!-- History panel -->
+<div class="history-panel" id="history-panel">
+  <div class="history-panel-header">
+    <div class="history-panel-title">Version History <span style="font-size:10px;font-weight:500;color:var(--green);background:var(--green-dim);padding:2px 8px;border-radius:10px;margin-left:6px;font-family:'JetBrains Mono',monospace;">● shared across team</span></div>
+    <div class="compare-controls">
+      <span class="compare-hint" id="compare-hint">Select 2 versions to compare</span>
+      <button class="btn-do-compare" id="compare-btn" onclick="runCompare()">⟺ Compare</button>
+    </div>
+  </div>
+  <div class="history-list" id="history-list">
+    <div class="history-empty">No saved versions yet. Click <strong>Save Version</strong> to capture the current state.</div>
+  </div>
+</div>
+
+<!-- Company Objective Block (pinned, not collapsible) -->
+<div class="obj-card" id="obj-card">
+  <div class="obj-eyebrow">Company Objective</div>
+  <div class="obj-title" id="obj-title" contenteditable="true" data-key="obj-title"
+    onblur="saveText('obj-title',this)" onkeydown="if(event.key==='Enter'){event.preventDefault();this.blur();}">
+    Establish Formant as the leader in real-world physical AI, and set up our next round from a position of strength.
+  </div>
+  <div class="kr-list" id="kr-list"></div>
+  <button class="add-goal-btn" onclick="addKR()" style="margin-top:10px;">＋ Add Key Result</button>
+</div>
+
+<!-- Status pills -->
+<div class="pills">
+  <div class="pill ns"><div class="pill-count" id="cnt-ns">—</div><div class="pill-label">Not Started</div></div>
+  <div class="pill ip"><div class="pill-count" id="cnt-ip">—</div><div class="pill-label">In Progress</div></div>
+  <div class="pill cp"><div class="pill-count" id="cnt-cp">—</div><div class="pill-label">Complete</div></div>
+</div>
+
+<div class="overall-bar-wrap">
+  <div class="overall-label">Overall Progress</div>
+  <div class="overall-track"><div class="overall-fill" id="overall-fill" style="width:0%"></div></div>
+  <div class="overall-pct" id="overall-pct">0%</div>
+</div>
+
+<!-- Section goals render target -->
+<div id="sections"></div>
+
+<div class="footer-note">hover a goal to remove it &nbsp;·&nbsp; click any text to edit &nbsp;·&nbsp; drag sliders &nbsp;·&nbsp; ⌘S to save a version</div>
+
+</div><!-- /container -->
+
+<!-- SAVE MODAL -->
+<div class="modal-overlay" id="save-modal-overlay">
+  <div class="modal">
+    <div class="modal-title">Save Version</div>
+    <div class="modal-sub">Name this snapshot — restore or compare it any time.</div>
+    <input class="modal-input" id="save-label-input" type="text" placeholder="e.g. Before lighthouse meeting"
+      onkeydown="if(event.key==='Enter')confirmSave();if(event.key==='Escape')hideSaveModal()">
+    <div class="modal-actions">
+      <button class="btn-modal-cancel" onclick="hideSaveModal()">Cancel</button>
+      <button class="btn-modal-ok" onclick="confirmSave()">Save Snapshot</button>
+    </div>
+  </div>
+</div>
+
+<!-- NAME MODAL -->
+<div class="modal-overlay" id="name-modal-overlay">
+  <div class="modal">
+    <div class="modal-title">What's your name?</div>
+    <div class="modal-sub">Your name shows in the sync indicator so teammates know who updated what.</div>
+    <input class="modal-input" id="name-input" type="text" placeholder="e.g. Maya"
+      onkeydown="if(event.key==='Enter')saveName()">
+    <div class="modal-actions">
+      <button class="btn-modal-ok" onclick="saveName()" style="width:100%">Continue →</button>
+    </div>
+  </div>
+</div>
+
+<!-- COMPARE MODAL -->
+<div class="cmp-overlay" id="cmp-overlay">
+  <div class="cmp-modal">
+    <div class="cmp-header">
+      <div><div class="cmp-title">Version Comparison</div><div class="cmp-vers-label" id="cmp-vers-label"></div></div>
+      <button class="btn-close-cmp" onclick="hideCompare()">✕</button>
+    </div>
+    <div class="cmp-body" id="cmp-body"></div>
+  </div>
+</div>
+
+<script>
+// ═══════════════════════════════════════════════════════════════
+//  MULTI-USER SYNC — PASTE YOUR FIREBASE URL HERE
+// ═══════════════════════════════════════════════════════════════
+const FIREBASE_URL = "https://formant-july-sep-2026-okrs-default-rtdb.firebaseio.com";
+//  Example: "https://formant-okrs-q3-2026-default-rtdb.firebaseio.com"
+//
+//  Setup (free, 5 min):
+//  1. https://console.firebase.google.com → Add project
+//  2. Build → Realtime Database → Create database (test mode)
+//  3. Copy the URL → paste above → save → reshare the file
+// ═══════════════════════════════════════════════════════════════
+
+const DB_PATH    = "/formant-okrs-q3-2026";
+const POLL_MS    = 8000;
+const PUSH_DELAY = 1500;
+
+// ── TIMELINE ──
+const START = new Date('2026-06-01');
+const END   = new Date('2026-09-30');
+function updateTimeline(){
+  const now=new Date(), total=END-START, elapsed=Math.max(0,now-START);
+  const pct=Math.min(100,Math.max(0,Math.round(elapsed/total*100)));
+  const days=Math.max(0,Math.round((END-now)/(1000*60*60*24)));
+  const el=document.getElementById('t-fill');
+  if(el){el.style.width=pct+'%';}
+  const ds=document.getElementById('stat-days'),ps=document.getElementById('stat-pct');
+  if(ds) ds.textContent=days;
+  if(ps) ps.textContent=pct+'%';
+  const tl=document.getElementById('today-lbl');
+  if(tl){
+    const opts={month:'long',day:'numeric'};
+    tl.textContent='▲ Today, '+now.toLocaleDateString('en-US',opts);
+  }
+}
+updateTimeline();
+
+// ── SEED DATA ──
+const COMPANY_KRS = [
+  {id:'kr1',n:'01',title:'1 named, announceable physical-AI partnership signed by Sept 30',desc:'The lighthouse. Defined as paid or co-announced deployment — not an unpaid LOI.'},
+  {id:'kr2',n:'02',title:'≥1 concrete, public proof point that physical AI is running in the field today',desc:'A video, case study, or white paper from a live customer deployment.'},
+  {id:'kr3',n:'03',title:'Top-5 accounts (incl. Holman) retained, with ≥1 renewal or expansion closed',desc:'Protecting the base while we build the new.'},
+  {id:'kr4',n:'04',title:'Next round set up — investor narrative + data room ready by Sept',desc:'Conversations opened in September on the back of the partnership.'},
+];
+
+const SECTIONS = [
+  {id:'gtm',icon:'📡',title:'GTM',subtitle:'Land the lighthouse, and stand up the reference base.',goals:[
+    {id:'gtm1',n:'01',title:'1 signed/announced lighthouse partner by Sept 30',desc:'Frontier lab, humanoid/hardware builder, or top-tier robotics co. Defined as paid or co-announced deployment, not an unpaid LOI.',progress:0},
+    {id:'gtm2',n:'02',title:'≥3 partners in qualified late-stage by Sept 15',desc:'Budget owner identified, scope drafted — the funnel behind the one.',progress:0},
+    {id:'gtm3',n:'03',title:'1–5 existing customers with case studies',desc:'Logo use + willingness to take a reference call. The proof base.',progress:0},
+  ]},
+  {id:'product',icon:'🛠️',title:'Product',subtitle:'Prove physical AI is real outside the lab, with existing customers.',goals:[
+    {id:'prod1',n:'01',title:'Deploy — ≥3 AI/agentic deployments live in production',desc:'Running on real-world data with existing customers. This is where credibility lives: physical AI working today, not in a demo environment.',progress:0},
+    {id:'prod2',n:'02',title:'Prove — ≥3 concrete, externally shareable artifacts',desc:'A customer video, case study, or white paper from live deployments — partner-ready and built to be shown to the world.',progress:0},
+  ]},
+  {id:'marketing',icon:'📣',title:'Marketing',subtitle:'Establish Formant as a physical-AI leader: amplify the proof, run the outbound engine.',goals:[
+    {id:'mkt1',n:'01',title:'Thought-leadership engine live — 6 podcast episodes + LinkedIn cadence',desc:'A sustained cadence of physical-AI content via founder/exec LinkedIn (4–5 company + 2–3 personal posts per week).',progress:0},
+    {id:'mkt2',n:'02',title:'formant.ai live as a positioning moment',desc:'The unified site launched behind a physical-AI position statement incl. a product demo video — not just a site ship.',progress:0},
+    {id:'mkt3',n:'03',title:'Amplify the partnership + the proof',desc:'Turn the lighthouse partnership and Product\'s proof artifacts into a coordinated announcement and outbound assets; V2 collateral suite used in ≥2X live partner pitches.',progress:0},
+  ]},
+  {id:'ops',icon:'⚙️',title:'Operations',subtitle:'Get us ready to raise and ready to sell.',goals:[
+    {id:'ops1',n:'01',title:'Fundraise-ready by August',desc:'Updated model, data room, and narrative complete so the round opens from strength.',progress:0},
+    {id:'ops2',n:'02',title:'SOC2 / security posture kept audit-clean',desc:'Customer-requested and it unblocks enterprise and partner conversations.',progress:0},
+    {id:'ops3',n:'03',title:'Capital efficiency maintained',desc:'Keep cloud and tooling lean so resources flow to the pivot. Cloud + AI-tooling optimization already underway and communicated.',progress:0},
+  ]},
+  {id:'fde',icon:'🤝',title:'FDE + Account Management',subtitle:'Customer deployments, success, and expansion.',goals:[
+    {id:'fde1',n:'01',title:'New goal',desc:'Click to edit this goal description.',progress:0},
+    {id:'fde2',n:'02',title:'New goal',desc:'Click to edit this goal description.',progress:0},
+    {id:'fde3',n:'03',title:'New goal',desc:'Click to edit this goal description.',progress:0},
+  ]},
+];
+
+// ── MUTABLE STATE ──
+const state={}, textState={}, versions=[];
+const sectionGoals={};
+const krGoals={};
+let cmpSel=[];
+
+// Init company KRs
+COMPANY_KRS.forEach(k=>{
+  krGoals[k.id]={...k};
+  state[k.id]=0;
+  textState['krtitle-'+k.id]=k.title;
+  textState['krdesc-'+k.id]=k.desc;
+});
+textState['obj-title']='Establish Formant as the leader in real-world physical AI, and set up our next round from a position of strength.';
+
+// Init section goals
+SECTIONS.forEach(s=>{
+  sectionGoals[s.id]=s.goals.map(g=>({...g}));
+  s.goals.forEach(g=>{
+    state[g.id]=g.progress;
+    textState['title-'+g.id]=g.title;
+    textState['desc-'+g.id]=g.desc;
+  });
+  textState['sec-'+s.id]=s.title;
+  textState['secsub-'+s.id]=s.subtitle;
+});
+
+// Restore from localStorage
+const LS_KEY='fg-okr-q3-2026-v1';
+try{
+  const saved=localStorage.getItem(LS_KEY);
+  if(saved){
+    const d=JSON.parse(saved);
+    if(d.sectionGoals) Object.keys(d.sectionGoals).forEach(id=>{if(sectionGoals[id]!==undefined)sectionGoals[id]=d.sectionGoals[id];});
+    if(d.krGoals) Object.keys(d.krGoals).forEach(id=>{if(krGoals[id]!==undefined)krGoals[id]=d.krGoals[id];});
+    if(d.state) Object.assign(state,d.state);
+    if(d.textState) Object.assign(textState,d.textState);
+    if(d.versions) versions.push(...d.versions);
+  }
+}catch(e){}
+
+function persist(){
+  try{localStorage.setItem(LS_KEY,JSON.stringify({sectionGoals,krGoals,state,textState,versions}));}catch(e){}
+}
+
+function allGoals(){
+  return [...Object.values(krGoals), ...Object.values(sectionGoals).flat()];
+}
+function statusFromPct(p){return p===0?'not-started':p===100?'complete':'in-progress';}
+const LABELS={'not-started':'○ Not Started','in-progress':'◑ In Progress','complete':'● Complete'};
+
+// ── SYNC ──
+const syncEnabled=!!(FIREBASE_URL&&FIREBASE_URL.startsWith('http'));
+let userName=localStorage.getItem('fg-username')||'';
+let syncedAt=0, pushTimer=null, pollTimer=null, lastUpdatedBy='';
+
+function setSyncUI(status,msg){
+  const dot=document.getElementById('sync-dot'),lbl=document.getElementById('sync-label');
+  if(dot) dot.className='sync-dot '+status;
+  if(lbl) lbl.textContent=msg;
+}
+function schedulePush(){if(!syncEnabled)return;clearTimeout(pushTimer);pushTimer=setTimeout(pushState,PUSH_DELAY);}
+
+async function pushState(){
+  if(!syncEnabled) return;
+  setSyncUI('syncing','↑ Saving…');
+  const gs={};
+  Object.keys(sectionGoals).forEach(id=>{gs[id]=sectionGoals[id].map(g=>({...g}));});
+  const payload={
+    state:{...state},textState:{...textState},
+    sectionGoals:gs,krGoals:{...krGoals},
+    versions:[...versions],
+    meta:{updatedAt:Date.now(),updatedBy:userName||'Anonymous'}
+  };
+  try{
+    const res=await fetch(FIREBASE_URL.replace(/\/$/,'')+DB_PATH+'.json',{
+      method:'PUT',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)
+    });
+    if(res.ok){
+      syncedAt=payload.meta.updatedAt;lastUpdatedBy=payload.meta.updatedBy;
+      setSyncUI('ok','● Saved by '+lastUpdatedBy+' · just now');
+      clearUnsaved();persist();
+    }else{setSyncUI('error','● Save failed');}
+  }catch(e){setSyncUI('error','● Network error');}
+}
+
+async function pullState(isInit=false){
+  if(!syncEnabled) return;
+  try{
+    const res=await fetch(FIREBASE_URL.replace(/\/$/,'')+DB_PATH+'.json');
+    if(!res.ok) return;
+    const data=await res.json();
+    if(!data||!data.meta){if(isInit)setSyncUI('ok','● Connected — no data yet');return;}
+    if(!isInit&&data.meta.updatedAt<=syncedAt) return;
+    applyRemoteState(data);
+    syncedAt=data.meta.updatedAt;lastUpdatedBy=data.meta.updatedBy;
+    const age=Math.round((Date.now()-data.meta.updatedAt)/1000);
+    const ageStr=age<5?'just now':age<60?age+'s ago':Math.round(age/60)+'m ago';
+    setSyncUI('ok','● Updated by '+lastUpdatedBy+' · '+ageStr);
+  }catch(e){if(!isInit)setSyncUI('error','● Connection lost');}
+}
+
+function applyRemoteState(data){
+  if(data.state) Object.assign(state,data.state);
+  if(data.textState) Object.assign(textState,data.textState);
+  if(data.sectionGoals){
+    Object.keys(data.sectionGoals).forEach(sid=>{
+      if(sectionGoals[sid]!==undefined) sectionGoals[sid]=data.sectionGoals[sid];
+    });
+  }
+  if(data.krGoals) Object.assign(krGoals,data.krGoals);
+  // Merge versions: union by id, newest first — so all users share the full history
+  if(data.versions && Array.isArray(data.versions)){
+    const remoteIds=new Set(data.versions.map(v=>v.id));
+    const localOnly=versions.filter(v=>!remoteIds.has(v.id));
+    versions.length=0;
+    versions.push(...[...data.versions,...localOnly].sort((a,b)=>b.createdAt-a.createdAt));
+    document.getElementById('history-count').textContent=versions.length;
+    if(document.getElementById('history-panel').classList.contains('open')) renderVersionList();
+  }
+  renderKRs();
+  SECTIONS.forEach(s=>{renderSectionBody(s.id);refreshSection(s.id);});
+  document.querySelectorAll('[data-key]').forEach(el=>{
+    const t=textState[el.dataset.key];if(t!==undefined&&el!==document.activeElement)el.textContent=t;
+  });
+  allGoals().forEach(g=>{
+    const p=state[g.id]??0;
+    const sl=document.getElementById('range-'+g.id);
+    const lbl=document.getElementById('lbl-'+g.id);
+    const b=document.getElementById('b-'+g.id);
+    if(sl){sl.value=p;updateSliderFill(sl);}
+    if(lbl){lbl.textContent=p+'%';lbl.className='goal-pct-label'+(p===100?' complete-color':p>0?' progress-color':'');}
+    if(b){const st=statusFromPct(p);b.className='badge '+st;b.textContent=LABELS[st];}
+  });
+  refreshOverall();refreshSummary();
+}
+
+setInterval(()=>{
+  if(!syncedAt||!syncEnabled) return;
+  const age=Math.round((Date.now()-syncedAt)/1000);
+  const ageStr=age<5?'just now':age<60?age+'s ago':Math.round(age/60)+'m ago';
+  const lbl=document.getElementById('sync-label');
+  if(lbl&&lbl.textContent.includes('·')) lbl.textContent=lbl.textContent.replace(/·\s.*$/,'· '+ageStr);
+},20000);
+
+// ── NAME MANAGEMENT ──
+function showNameModal(){
+  document.getElementById('name-input').value=userName||'';
+  document.getElementById('name-modal-overlay').classList.add('open');
+  setTimeout(()=>document.getElementById('name-input').focus(),80);
+}
+function saveName(){
+  const n=document.getElementById('name-input').value.trim();if(!n)return;
+  userName=n;localStorage.setItem('fg-username',n);
+  document.getElementById('user-name-display').textContent=n;
+  document.getElementById('name-modal-overlay').classList.remove('open');
+  if(syncEnabled&&!pollTimer){pullState(true);pollTimer=setInterval(()=>pullState(),POLL_MS);}
+}
+
+// ── SLIDER ──
+function updateSliderFill(sl){
+  const p=parseInt(sl.value);sl.className=p===100?'done':'';
+  sl.style.background='linear-gradient(90deg,'+(p===100?'var(--green)':'var(--iris)')+' '+p+'%,rgba(163,171,169,.1) '+p+'%)';
+}
+function onSliderChange(id){
+  const p=parseInt(document.getElementById('range-'+id).value);
+  state[id]=p;
+  const lbl=document.getElementById('lbl-'+id);
+  if(lbl){lbl.textContent=p+'%';lbl.className='goal-pct-label'+(p===100?' complete-color':p>0?' progress-color':'');}
+  const b=document.getElementById('b-'+id);
+  if(b){const st=statusFromPct(p);b.className='badge '+st;b.textContent=LABELS[st];}
+  const sl=document.getElementById('range-'+id);if(sl)updateSliderFill(sl);
+  // update section goal object
+  for(const sid in sectionGoals){
+    const g=sectionGoals[sid].find(x=>x.id===id);if(g){g.progress=p;break;}
+  }
+  // update kr object
+  if(krGoals[id]) krGoals[id].progress=p;
+  refreshSection(findSection(id));
+  refreshOverall();refreshSummary();markUnsaved();schedulePush();
+}
+function findSection(goalId){
+  for(const s of SECTIONS){if(s.goals.find(g=>g.id===goalId))return s.id;}
+  return null;
+}
+
+// ── UNSAVED DOT ──
+function markUnsaved(){document.getElementById('unsaved-dot').classList.add('visible');}
+function clearUnsaved(){document.getElementById('unsaved-dot').classList.remove('visible');}
+
+// ── TEXT EDITING ──
+function saveText(key,el){
+  const val=el.textContent.trim();
+  textState[key]=val;
+  // update goal objects
+  if(key.startsWith('title-')){
+    const gid=key.slice(6);
+    for(const sid in sectionGoals){const g=sectionGoals[sid].find(x=>x.id===gid);if(g){g.title=val;break;}}
+    if(krGoals[gid]) krGoals[gid].title=val;
+  }
+  if(key.startsWith('desc-')){
+    const gid=key.slice(5);
+    for(const sid in sectionGoals){const g=sectionGoals[sid].find(x=>x.id===gid);if(g){g.desc=val;break;}}
+    if(krGoals[gid]) krGoals[gid].desc=val;
+  }
+  if(key.startsWith('krtitle-')){const gid=key.slice(8);if(krGoals[gid])krGoals[gid].title=val;}
+  if(key.startsWith('krdesc-')){const gid=key.slice(7);if(krGoals[gid])krGoals[gid].desc=val;}
+  markUnsaved();schedulePush();persist();
+}
+
+// ── COMPANY KRs ──
+function renderKRs(){
+  const list=document.getElementById('kr-list');if(!list)return;
+  list.innerHTML='';
+  Object.values(krGoals).forEach((k,i)=>{
+    const p=state[k.id]??0;
+    const st=statusFromPct(p);
+    const div=document.createElement('div');
+    div.className='kr-item';div.id='kr-item-'+k.id;
+    div.innerHTML=`
+      <div class="kr-num">${String(i+1).padStart(2,'0')}</div>
+      <div class="kr-text">
+        <div class="kr-title goal-title-e" contenteditable="true" data-key="krtitle-${k.id}"
+          onblur="saveText('krtitle-${k.id}',this)"
+          onkeydown="if(event.key==='Enter'){event.preventDefault();this.blur();}"
+          onclick="event.stopPropagation()">${textState['krtitle-'+k.id]||k.title}</div>
+        <div class="kr-desc goal-desc-e" contenteditable="true" data-key="krdesc-${k.id}"
+          onblur="saveText('krdesc-${k.id}',this)"
+          onclick="event.stopPropagation()">${textState['krdesc-'+k.id]||k.desc}</div>
+        <div class="goal-slider-row" style="padding-left:0;margin-top:10px;">
+          <input type="range" id="range-${k.id}" min="0" max="100" step="5" value="${p}"
+            oninput="onSliderChange('${k.id}')" style="">
+          <span class="goal-pct-label${p===100?' complete-color':p>0?' progress-color':''}" id="lbl-${k.id}">${p}%</span>
+          <span class="badge ${st}" id="b-${k.id}">${LABELS[st]}</span>
+        </div>
+      </div>
+      <button class="goal-del" onclick="removeKR('${k.id}')" title="Remove">✕</button>
+    `;
+    list.appendChild(div);
+    const sl=div.querySelector('input[type=range]');if(sl)updateSliderFill(sl);
+  });
+}
+
+function addKR(){
+  const id='kr'+Date.now();
+  krGoals[id]={id,n:String(Object.keys(krGoals).length+1).padStart(2,'0'),title:'New key result',desc:'Click to edit this key result.',progress:0};
+  state[id]=0;textState['krtitle-'+id]='New key result';textState['krdesc-'+id]='Click to edit this key result.';
+  renderKRs();refreshOverall();refreshSummary();markUnsaved();schedulePush();
+  setTimeout(()=>{
+    const el=document.querySelector('#kr-item-'+id+' .goal-title-e');if(el){el.focus();selectAll(el);}
+  },80);
+}
+
+function removeKR(id){
+  if(Object.keys(krGoals).length<=1)return;
+  if(!confirm('Remove this key result?'))return;
+  delete krGoals[id];delete state[id];
+  delete textState['krtitle-'+id];delete textState['krdesc-'+id];
+  renderKRs();refreshOverall();refreshSummary();markUnsaved();schedulePush();persist();
+}
+
+// ── SECTION RENDERING ──
+function renderSectionBody(secId){
+  const body=document.getElementById('body-'+secId);if(!body)return;
+  const goals=sectionGoals[secId]||[];
+  if(!goals.length){
+    body.innerHTML='<div class="empty-section">No goals yet — click + Add Goal to add one.</div>';
+    body.innerHTML+='<button class="add-goal-btn" onclick="addGoal(\''+secId+'\')">＋ Add Goal</button>';
+    return;
+  }
+  let html='';
+  goals.forEach((g,i)=>{
+    const p=state[g.id]??0,st=statusFromPct(p);
+    html+=`<div class="goal-item" id="gi-${g.id}">
+      <div class="goal-top">
+        <span class="goal-num">${String(i+1).padStart(2,'0')}</span>
+        <div class="goal-content">
+          <div class="goal-title-e" contenteditable="true" data-key="title-${g.id}"
+            onblur="saveText('title-${g.id}',this)"
+            onkeydown="if(event.key==='Enter'){event.preventDefault();this.blur();}"
+            onclick="event.stopPropagation()">${textState['title-'+g.id]||g.title}</div>
+          <div class="goal-desc-e" contenteditable="true" data-key="desc-${g.id}"
+            onblur="saveText('desc-${g.id}',this)"
+            onclick="event.stopPropagation()">${textState['desc-'+g.id]||g.desc}</div>
+        </div>
+        <span class="badge ${st}" id="b-${g.id}">${LABELS[st]}</span>
+        <button class="goal-del" onclick="removeGoal('${secId}','${g.id}')" title="Remove">✕</button>
+      </div>
+      <div class="goal-slider-row">
+        <input type="range" id="range-${g.id}" min="0" max="100" step="5" value="${p}" oninput="onSliderChange('${g.id}')">
+        <span class="goal-pct-label${p===100?' complete-color':p>0?' progress-color':''}" id="lbl-${g.id}">${p}%</span>
+      </div>
+    </div>`;
+  });
+  html+=`<button class="add-goal-btn" onclick="addGoal('${secId}')">＋ Add Goal</button>`;
+  body.innerHTML=html;
+  goals.forEach(g=>{const sl=document.getElementById('range-'+g.id);if(sl)updateSliderFill(sl);});
+}
+
+function refreshSection(secId){
+  if(!secId)return;
+  const goals=sectionGoals[secId]||[];
+  const avg=goals.length?Math.round(goals.reduce((s,g)=>(s+(state[g.id]??0)),0)/goals.length):0;
+  const fill=document.getElementById('sec-fill-'+secId),lbl=document.getElementById('sec-lbl-'+secId);
+  if(fill)fill.style.width=avg+'%';
+  if(lbl)lbl.textContent=avg+'%';
+}
+
+function addGoal(secId){
+  const id='g'+Date.now();
+  const goals=sectionGoals[secId];
+  goals.push({id,n:String(goals.length+1).padStart(2,'0'),title:'New goal',desc:'Click to edit this goal description.',progress:0});
+  state[id]=0;textState['title-'+id]='New goal';textState['desc-'+id]='Click to edit this goal description.';
+  renderSectionBody(secId);refreshSection(secId);refreshOverall();refreshSummary();
+  markUnsaved();schedulePush();
+  setTimeout(()=>{
+    const el=document.querySelector('#gi-'+id+' .goal-title-e');if(el){el.focus();selectAll(el);}
+  },80);
+}
+
+function removeGoal(secId,goalId){
+  if(sectionGoals[secId].length<=1)return;
+  if(!confirm('Remove this goal?'))return;
+  sectionGoals[secId]=sectionGoals[secId].filter(g=>g.id!==goalId);
+  delete state[goalId];delete textState['title-'+goalId];delete textState['desc-'+goalId];
+  renderSectionBody(secId);refreshSection(secId);refreshOverall();refreshSummary();
+  markUnsaved();schedulePush();persist();
+}
+
+function selectAll(el){const r=document.createRange();r.selectNodeContents(el);const s=window.getSelection();s.removeAllRanges();s.addRange(r);}
+
+// ── OVERALL ──
+function refreshOverall(){
+  const all=allGoals();
+  if(!all.length)return;
+  const avg=Math.round(all.reduce((s,g)=>(s+(state[g.id]??0)),0)/all.length);
+  const fill=document.getElementById('overall-fill'),pct=document.getElementById('overall-pct');
+  if(fill)fill.style.width=avg+'%';
+  if(pct)pct.textContent=avg+'%';
+}
+
+function refreshSummary(){
+  const all=allGoals();
+  let ns=0,ip=0,cp=0;
+  all.forEach(g=>{const p=state[g.id]??0;p===0?ns++:p===100?cp++:ip++;});
+  const e=id=>document.getElementById(id);
+  if(e('cnt-ns'))e('cnt-ns').textContent=ns;
+  if(e('cnt-ip'))e('cnt-ip').textContent=ip;
+  if(e('cnt-cp'))e('cnt-cp').textContent=cp;
+}
+
+// ── BUILD SECTIONS DOM ──
+function buildSections(){
+  const wrap=document.getElementById('sections');
+  SECTIONS.forEach((s,si)=>{
+    const open=si<2;
+    const goals=sectionGoals[s.id]||[];
+    const avg=goals.length?Math.round(goals.reduce((sum,g)=>(sum+(state[g.id]??0)),0)/goals.length):0;
+    const div=document.createElement('div');
+    div.className='section'+(open?' open':'');div.id='sec-'+s.id;
+    div.innerHTML=`
+      <div class="section-header" onclick="toggleSection('${s.id}')">
+        <div class="section-left">
+          <div class="section-icon">${s.icon}</div>
+          <div>
+            <div class="section-title-e" contenteditable="true" data-key="sec-${s.id}"
+              onblur="saveText('sec-${s.id}',this)"
+              onkeydown="if(event.key==='Enter'){event.preventDefault();this.blur();}"
+              onclick="event.stopPropagation()">${textState['sec-'+s.id]||s.title}</div>
+            <div class="section-meta">${textState['secsub-'+s.id]||s.subtitle}</div>
+          </div>
+        </div>
+        <div class="section-right">
+          <div class="sec-prog-track"><div class="sec-prog-fill" id="sec-fill-${s.id}" style="width:${avg}%"></div></div>
+          <span class="sec-prog-label" id="sec-lbl-${s.id}">${avg}%</span>
+          <span class="chevron">▾</span>
+        </div>
+      </div>
+      <div class="section-body" id="body-${s.id}"></div>
+    `;
+    wrap.appendChild(div);
+    renderSectionBody(s.id);
+  });
+}
+
+function toggleSection(id){
+  const sec=document.getElementById('sec-'+id);
+  if(sec) sec.classList.toggle('open');
+}
+
+// ── VERSION CONTROL ──
+function captureSnapshot(){
+  const gs={};
+  Object.keys(sectionGoals).forEach(id=>{gs[id]=sectionGoals[id].map(g=>({...g}));});
+  return {state:{...state},textState:{...textState},sectionGoals:gs,krGoals:{...krGoals}};
+}
+
+function showSaveModal(){
+  document.getElementById('save-label-input').value='';
+  document.getElementById('save-modal-overlay').classList.add('open');
+  setTimeout(()=>document.getElementById('save-label-input').focus(),80);
+}
+function hideSaveModal(){document.getElementById('save-modal-overlay').classList.remove('open');}
+
+function confirmSave(){
+  const label=document.getElementById('save-label-input').value.trim()||'Version '+new Date().toLocaleTimeString();
+  const snap=captureSnapshot();
+  const all=allGoals();
+  let ns=0,ip=0,cp=0;
+  all.forEach(g=>{const p=snap.state[g.id]??0;p===0?ns++:p===100?cp++:ip++;});
+  versions.unshift({id:'v'+Date.now(),label,createdAt:Date.now(),createdBy:userName||'Anonymous',counts:{ns,ip,cp},snapshot:snap});
+  hideSaveModal();renderVersionList();clearUnsaved();persist();
+  // Push immediately so all teammates see the new version right away
+  pushState();
+}
+
+function renderVersionList(){
+  const list=document.getElementById('history-list');
+  document.getElementById('history-count').textContent=versions.length;
+  if(!versions.length){list.innerHTML='<div class="history-empty">No saved versions yet. Click <strong>Save Version</strong> to capture the current state.</div>';return;}
+  list.innerHTML='';
+  versions.forEach(v=>{
+    const card=document.createElement('div');
+    card.className='version-card'+(cmpSel.includes(v.id)?' sel':'');card.id='vc-'+v.id;
+    const ago=formatAgo(v.createdAt);
+    card.innerHTML=`
+      <input type="checkbox" class="version-check" ${cmpSel.includes(v.id)?'checked':''}
+        onchange="toggleCmpSel('${v.id}',this)">
+      <div class="version-info">
+        <div class="version-name">${v.label}</div>
+        <div class="version-time">${ago} · by ${v.createdBy||'Unknown'}</div>
+        <div class="version-chips">
+          <span class="chip ns">○ ${v.counts?.ns??0}</span>
+          <span class="chip ip">◑ ${v.counts?.ip??0}</span>
+          <span class="chip cp">● ${v.counts?.cp??0}</span>
+        </div>
+      </div>
+      <button class="btn-restore" onclick="restoreVersion('${v.id}')">Restore</button>
+      <button class="btn-del" onclick="deleteVersion('${v.id}')">✕</button>
+    `;
+    list.appendChild(card);
+  });
+}
+
+function toggleHistory(){
+  const p=document.getElementById('history-panel'),b=document.getElementById('history-btn');
+  p.classList.toggle('open');b.classList.toggle('active');
+  if(p.classList.contains('open')) renderVersionList();
+}
+
+function toggleCmpSel(id,cb){
+  if(cb.checked){
+    if(cmpSel.length>=2){cb.checked=false;return;}
+    cmpSel.push(id);
+  }else{cmpSel=cmpSel.filter(x=>x!==id);}
+  document.querySelectorAll('.version-card').forEach(c=>{
+    const vid=c.id.replace('vc-','');c.classList.toggle('sel',cmpSel.includes(vid));
+  });
+  const btn=document.getElementById('compare-btn'),hint=document.getElementById('compare-hint');
+  if(cmpSel.length===2){btn.classList.add('visible');hint.textContent='Ready to compare';}
+  else{btn.classList.remove('visible');hint.textContent='Select 2 versions to compare';}
+}
+
+function restoreVersion(id){
+  const v=versions.find(x=>x.id===id);if(!v)return;
+  if(!confirm('Restore "'+v.label+'"? Current state will be auto-saved first.'))return;
+  const snap=captureSnapshot();const all=allGoals();
+  let ns=0,ip=0,cp=0;all.forEach(g=>{const p=snap.state[g.id]??0;p===0?ns++:p===100?cp++:ip++;});
+  versions.unshift({id:'v'+Date.now(),label:'Auto-save before restoring "'+v.label+'"',createdAt:Date.now(),createdBy:userName||'Auto',counts:{ns,ip,cp},snapshot:snap});
+  applyRemoteState(v.snapshot);
+  renderVersionList();markUnsaved();schedulePush();persist();
+}
+
+function deleteVersion(id){
+  if(!confirm('Delete this version?'))return;
+  versions.splice(versions.findIndex(v=>v.id===id),1);
+  cmpSel=cmpSel.filter(x=>x!==id);renderVersionList();persist();
+}
+
+// ── COMPARE ──
+function runCompare(){
+  if(cmpSel.length!==2)return;
+  const [vA,vB]=cmpSel.map(id=>versions.find(v=>v.id===id));
+  if(!vA||!vB)return;
+  document.getElementById('cmp-vers-label').textContent='"'+vA.label+'" vs "'+vB.label+'"';
+  const body=document.getElementById('cmp-body');body.innerHTML='';
+  // all goals across both snapshots
+  const allIds=new Set([...Object.keys(vA.snapshot.state||{}),...Object.keys(vB.snapshot.state||{})]);
+  // group by section
+  const bySection={};
+  // Build goal name lookup from both snapshots
+  const getName=id=>{
+    const ts=vB.snapshot.textState||{};const ts2=vA.snapshot.textState||{};
+    return ts['title-'+id]||ts['krtitle-'+id]||ts2['title-'+id]||ts2['krtitle-'+id]||id;
+  };
+  const getSection=id=>{
+    for(const s of SECTIONS){if(s.goals.find(g=>g.id===id))return s.id;}
+    if(id.startsWith('kr'))return '__kr__';
+    return '__other__';
+  };
+  allIds.forEach(id=>{
+    const sid=getSection(id);
+    if(!bySection[sid])bySection[sid]=[];
+    bySection[sid].push(id);
+  });
+  let totalUp=0,totalDn=0,moved=0;
+  const secOrder=['__kr__',...SECTIONS.map(s=>s.id),'__other__'];
+  secOrder.forEach(sid=>{
+    const ids=bySection[sid];if(!ids||!ids.length)return;
+    const secTitle=sid==='__kr__'?'Company Key Results':SECTIONS.find(s=>s.id===sid)?.title||sid;
+    const h=document.createElement('div');h.className='cmp-sec-title';h.textContent=secTitle;body.appendChild(h);
+    ids.forEach(id=>{
+      const pA=vA.snapshot.state?.[id]??null,pB=vB.snapshot.state?.[id]??null;
+      const name=getName(id);
+      const delta=pB!==null&&pA!==null?pB-pA:null;
+      if(delta!==null&&delta>0)totalUp++;
+      if(delta!==null&&delta<0)totalDn++;
+      if(delta!==null&&delta!==0)moved++;
+      const row=document.createElement('div');row.className='cmp-row';
+      let deltaHTML='';
+      if(pA===null){deltaHTML='<span class="cmp-new-tag">✦ new</span>';}
+      else if(pB===null){deltaHTML='<span class="cmp-text-tag">removed</span>';}
+      else if(delta===0){deltaHTML='<span class="cmp-delta eq">—</span>';}
+      else{deltaHTML='<span class="cmp-delta '+(delta>0?'up':'dn')+'">'+(delta>0?'+':'')+delta+'%</span>';}
+      row.innerHTML=`
+        <span class="cmp-goal-name">${name}</span>
+        <div class="cmp-pcts">
+          <span class="cmp-p old">${pA!==null?pA+'%':'—'}</span>
+          <span class="cmp-arr">→</span>
+          <span class="cmp-p">${pB!==null?pB+'%':'—'}</span>
+        </div>
+        ${deltaHTML}
+      `;
+      body.appendChild(row);
+    });
+  });
+  const sumDiv=document.createElement('div');sumDiv.className='cmp-summary';
+  const avgA=Math.round([...allIds].filter(id=>vA.snapshot.state?.[id]!==undefined).reduce((s,id)=>(s+(vA.snapshot.state[id]??0)),0)/Math.max(1,[...allIds].filter(id=>vA.snapshot.state?.[id]!==undefined).length));
+  const avgB=Math.round([...allIds].filter(id=>vB.snapshot.state?.[id]!==undefined).reduce((s,id)=>(s+(vB.snapshot.state[id]??0)),0)/Math.max(1,[...allIds].filter(id=>vB.snapshot.state?.[id]!==undefined).length));
+  const overallDelta=avgB-avgA;
+  sumDiv.innerHTML=`
+    <div class="cmp-sum-item"><div class="cmp-sum-val ${overallDelta>0?'up':overallDelta<0?'dn':'nu'}">${overallDelta>0?'+':''}${overallDelta}%</div><div class="cmp-sum-label">Avg Progress Δ</div></div>
+    <div class="cmp-sum-item"><div class="cmp-sum-val up">${totalUp}</div><div class="cmp-sum-label">Goals Advanced</div></div>
+    <div class="cmp-sum-item"><div class="cmp-sum-val ${totalDn>0?'dn':'nu'}">${totalDn}</div><div class="cmp-sum-label">Goals Declined</div></div>
+    <div class="cmp-sum-item"><div class="cmp-sum-val nu">${avgA}% → ${avgB}%</div><div class="cmp-sum-label">Overall Progress</div></div>
+  `;
+  body.appendChild(sumDiv);
+  document.getElementById('cmp-overlay').classList.add('open');
+}
+function hideCompare(){document.getElementById('cmp-overlay').classList.remove('open');}
+
+// ── UTILS ──
+function formatAgo(ts){
+  const s=Math.round((Date.now()-ts)/1000);
+  if(s<60)return s+'s ago';
+  if(s<3600)return Math.round(s/60)+'m ago';
+  if(s<86400)return Math.round(s/3600)+'h ago';
+  return new Date(ts).toLocaleDateString('en-US',{month:'short',day:'numeric'});
+}
+
+// ── KEYBOARD SHORTCUTS ──
+document.addEventListener('keydown',e=>{
+  if((e.metaKey||e.ctrlKey)&&e.key==='s'){e.preventDefault();showSaveModal();}
+  if(e.key==='Escape'){hideSaveModal();hideCompare();}
+});
+
+// ── INIT ──
+function init(){
+  // Timeline
+  updateTimeline();
+  // Setup callout
+  if(!syncEnabled){document.getElementById('setup-callout').classList.add('visible');}
+  // Sync UI
+  if(syncEnabled){setSyncUI('local','Connecting…');}
+  // Username
+  if(userName){
+    document.getElementById('user-name-display').textContent=userName;
+    if(syncEnabled){pullState(true);pollTimer=setInterval(()=>pullState(),POLL_MS);}
+  }else{
+    if(syncEnabled){
+      setTimeout(()=>showNameModal(),600);
+    }else{
+      setTimeout(()=>showNameModal(),600);
+    }
+  }
+  // Render company KRs
+  renderKRs();
+  // Build section DOM
+  buildSections();
+  // Stats
+  refreshOverall();refreshSummary();
+  // Restore objective text
+  const objEl=document.getElementById('obj-title');
+  if(objEl&&textState['obj-title'])objEl.textContent=textState['obj-title'];
+}
+
+init();
+</script>
+</body>
+</html>
